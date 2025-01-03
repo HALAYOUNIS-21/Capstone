@@ -1,27 +1,35 @@
 {
-  "include": [
-    "**/*",
-    "**/.server/**/*",
-    "**/.client/**/*",
-    ".react-router/types/**/*"
-  ],
+  "include": ["src/**/*", ".react-router/types/**/*"], // Include source and types directories
+  "exclude": ["node_modules", "dist"], // Exclude unnecessary directories
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["node", "vite/client"],
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
-    "rootDirs": [".", "./.react-router/types"],
-    "baseUrl": ".",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"], // Use modern JavaScript and DOM features
+    "types": ["node", "vite/client"], // Add Vite and Node.js types
+    "target": "ES2022", // Target modern JavaScript
+    "module": "ES2022", // Use ES modules
+    "moduleResolution": "bundler", // Optimized for Vite
+    "jsx": "react-jsx", // Use JSX runtime for React
+    "baseUrl": "./", // Base directory for imports
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["src/*"], // Alias for cleaner imports
+      "@types/*": [".react-router/types/*"] // Alias for type definitions
     },
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true
+    "esModuleInterop": true, // Enable ES module interoperability
+    "allowSyntheticDefaultImports": true, // Allow default imports
+    "verbatimModuleSyntax": true, // Enforce strict module syntax
+    "noEmit": true, // Prevent JavaScript file output
+    "resolveJsonModule": true, // Allow importing JSON files
+    "skipLibCheck": true, // Skip type checking for declaration files
+    "strict": true, // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Prevent case-sensitive mismatches
+    "isolatedModules": true, // Required for React compatibility
+    "noUnusedLocals": true, // Warn about unused variables
+    "noUnusedParameters": true, // Warn about unused parameters
+    "noImplicitReturns": true, // Ensure all paths return a value
+    "noFallthroughCasesInSwitch": true, // Prevent unintended switch case fallthrough
+    "allowJs": true, // Allow JavaScript files in the project
+    "checkJs": false, // Disable type checking for JavaScript files
+    "strictNullChecks": true, // Strictly check for null and undefined
+    "noImplicitAny": true, // Disallow implicit `any` types
+    "useUnknownInCatchVariables": true // Use `unknown` type in `catch` variables
   }
 }
