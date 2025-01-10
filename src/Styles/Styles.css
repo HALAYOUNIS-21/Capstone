@@ -1,0 +1,241 @@
+:root {
+  --Primary_Basic_Content: #FF7E52;
+  --Primary_Basic_Background: #F5EAFE;
+  --Shadow_Color: #CB5F3B;
+}
+
+/* Global Styles */
+body {
+  font-family: "Alexandria", sans-serif;
+  background-color: var(--Primary_Basic_Background);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  background-color: var(--Primary_Basic_Content);
+  text-align: center;
+  padding: 15px 0;
+}
+
+.header-title {
+  font-family: "Handjet", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--Primary_Basic_Background);
+}
+
+/* Title Section (Home Screen) */
+.title-section {
+  width: 100%;
+  padding: 20px 5%;
+  text-align: start;
+}
+
+.title {
+  font-family: "Handjet", sans-serif;
+  font-size: 145px;
+  font-weight: 800;
+  color: var(--Primary_Basic_Content);
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.description {
+  font-family: "Alexandria", sans-serif;
+  font-size: 54px;
+  font-weight: 300;
+  color: var(--Primary_Basic_Content);
+  margin: 0;
+}
+
+/* Flex Layout */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 5%;
+  width: 90%;
+  gap: 20px;
+}
+
+/* Instructions */
+.instructions {
+  flex: 1;
+  background-color: var(--Primary_Basic_Background);
+  border: 1px solid var(--Primary_Basic_Content);
+  padding: 20px;
+}
+
+.instructions h2 {
+  font-family: "Alexandria", sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--Primary_Basic_Content);
+  margin-bottom: 10px;
+}
+
+.instructions ol {
+  font-family: "Alexandria", sans-serif;
+  padding-left: 20px;
+  font-size: 18px;
+  color: var(--Primary_Basic_Content);
+}
+
+/* Quiz Controls */
+.quiz-controls {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Box */
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border: 1px solid var(--Primary_Basic_Content);
+  background-color: var(--Primary_Basic_Content);
+}
+
+.input-label {
+  font-family: "Alexandria", sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  color: var(--Primary_Basic_Background);
+}
+
+/* Number Controls */
+.number-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number-button {
+  font-family: "Alexandria", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--Primary_Basic_Content);
+  background-color: var(--Primary_Basic_Background);
+  border: 1px solid var(--Primary_Basic_Content);
+  width: 50px;
+  height: 50px;
+  box-shadow: 6px 6px 0 var(--Shadow_Color);
+  cursor: pointer;
+}
+
+.number-display {
+  font-family: "Alexandria", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--Primary_Basic_Background);
+  background-color: var(--Primary_Basic_Content);
+  padding: 10px 20px;
+  border: 1px solid var(--Primary_Basic_Background);
+  box-shadow: 6px 6px 0 var(--Shadow_Color);
+}
+
+/* Next Button */
+.next-button {
+  font-family: "Handjet", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--Primary_Basic_Background);
+  background-color: var(--Primary_Basic_Content);
+  padding: 15px 80px;
+  box-shadow: 8px 8px 0 var(--Shadow_Color);
+  cursor: pointer;
+  align-items: center;
+}
+
+/* ✅ RESPONSIVE DESIGN */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 100px;
+  }
+
+  .description {
+    font-size: 36px;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .input-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .number-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .number-display {
+    font-size: 18px;
+    padding: 8px 15px;
+  }
+}
+
+/* Mobile Devices (≤768px) */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 28px;
+  }
+
+  .title {
+    font-size: 72px;
+  }
+
+  .description {
+    font-size: 24px;
+  }
+
+  .instructions h2 {
+    font-size: 28px;
+  }
+
+  .instructions ol {
+    font-size: 16px;
+  }
+
+  .input-label {
+    font-size: 20px;
+  }
+
+  .number-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .number-display {
+    font-size: 16px;
+  }
+
+  .next-button {
+    font-size: 24px;
+    padding: 10px 40px;
+  }
+
+  .quiz-controls {
+    width: 100%;
+  }
+
+  .input-box {
+    width: 100%;
+    padding: 15px;
+  }
+}
