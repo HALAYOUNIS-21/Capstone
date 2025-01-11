@@ -1,0 +1,55 @@
+/* Container for Results */
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  /* Feedback Icon */
+  .result-icon {
+    width: 200px;
+    padding-top: 3%;
+    height: 200px;
+  }
+  
+  /* Title Styling */
+  .results-title {
+    font-family: "Handjet", sans-serif;
+    font-size: 92px;
+    margin-top: 0%;
+  }
+  
+  /* Subtitle Styling */
+  .results-subtitle {
+    font-family: "Alexandria", sans-serif;
+    font-size: 45px;
+    font-weight: 300;
+    margin-top: 0%;
+  }
+  
+  /* Score Text */
+  .score-text {
+    font-family: "Alexandria", sans-serif;
+    font-size: 72px;
+    font-weight: 600;
+    margin-top: 0%;
+  }
+  
+  /* Restart Button */
+  .restart-button {
+    font-family: "Handjet", sans-serif;
+    font-size: 46px;
+    padding: 10px 40px;
+    background-color: #FF7E52;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 8px 8px 0px rgba(173, 65, 65, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .restart-button:hover {
+    transform: translateY(-2px);
+  }
