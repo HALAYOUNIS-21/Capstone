@@ -1,15 +1,12 @@
+// src/Components/Header.jsx
+
 import React from "react";
-import { Link } from "react-router-dom";
-import "../components/Header.css";
+import "../components/Header.css";  // ✅ Correct path to the header styles
 
 const Header = () => {
   return (
     <header className="header">
-      <h1>
-        <Link to="/" className="header-title">
-          Quiz-world
-        </Link>
-      </h1>
+      <h1 className="header-title">Quiz-world</h1>
     </header>
   );
 };
