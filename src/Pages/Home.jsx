@@ -124,23 +124,35 @@ const Home = () => {
 
           {/* Question Number */}
           <div className="input-box">
-            <label className="input-label">Question No.</label>
-            <div className="number-controls">
-              <button
-                className="number-button"
-                onClick={() => setQuestionAmount((prev) => Math.max(1, prev - 1))}
-              >
-                -
-              </button>
-              <div className="number-display">{questionAmount}</div>
-              <button
-                className="number-button"
-                onClick={() => setQuestionAmount((prev) => Math.min(50, prev + 1))}
-              >
-                +
-              </button>
-            </div>
-          </div>
+  <label className="input-label">Question No.</label>
+  <div className="number-controls">
+    {/* Subtract Button with sub.svg */}
+    <button
+      className="number-button"
+      onClick={() => setQuestionAmount((prev) => Math.max(1, prev - 1))}
+    >
+      <img
+        src="/images/sub.svg"  // Assuming the image is in the public/images folder
+        alt="Subtract"
+        className="icon"
+      />
+    </button>
+
+    <div className="number-display">{questionAmount}</div>
+
+    {/* Add Button with add.svg */}
+    <button
+      className="number-button"
+      onClick={() => setQuestionAmount((prev) => Math.min(50, prev + 1))}
+    >
+      <img
+        src="/images/add.svg"  // Assuming the image is in the public/images folder
+        alt="Add"
+        className="icon"
+      />
+    </button>
+  </div>
+</div>
         </div>
       </div>
 

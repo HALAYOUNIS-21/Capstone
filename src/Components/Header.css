@@ -2,8 +2,7 @@
     width: 100vw;
     background-color: var(--Primary_Basic_Content);
     text-align: center;
-    padding: 10px 10;
-    margin: 30px;
+    padding: 10px;
   }
   
   .header-title {
@@ -12,4 +11,6 @@
     font-weight: 500;
     color: var(--Primary_Basic_Background);
     text-decoration: none;
+    text-align: left;
+    padding-left: 20px;
   }

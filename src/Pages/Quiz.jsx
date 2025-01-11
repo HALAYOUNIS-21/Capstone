@@ -4,13 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
 import "../Styles/quiz.css";  // ✅ Import Quiz-specific styles
 
-
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false); // ✅ Show correct/incorrect answer
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [feedbackMessage, setFeedbackMessage] = useState(""); // ✅ Feedback Message
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Quiz = () => {
   // ✅ Shuffle answer options
   const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
-  // ✅ Fetch quiz questions with Retry and Backoff
+  // ✅ Fetch quiz questions
   const fetchQuestions = async (retryCount = 0) => {
     try {
       const response = await axios.get(
@@ -41,8 +42,8 @@ const Quiz = () => {
       setLoading(false);
     } catch (error) {
       if (error.response && error.response.status === 429 && retryCount < 5) {
-        const delay = Math.pow(2, retryCount) * 1000; // Exponential backoff
-        console.warn(`Too many requests. Retrying in ${delay / 1000} seconds...`);
+        const delay = Math.pow(2, retryCount) * 1000;
+        console.warn(`Retrying in ${delay / 1000} seconds...`);
         setTimeout(() => fetchQuestions(retryCount + 1), delay);
       } else {
         console.error("Error fetching questions:", error);
@@ -52,7 +53,6 @@ const Quiz = () => {
     }
   };
 
-  // ✅ Fetch questions once on load
   useEffect(() => {
     if (category && difficulty && amount) {
       fetchQuestions();
@@ -61,23 +61,43 @@ const Quiz = () => {
 
   // ✅ Handle Answer Selection
   const handleAnswerSelect = (option) => {
-    setSelectedAnswer(option);
+    if (!showAnswer) {
+      setSelectedAnswer(option);
+    }
   };
 
-  // ✅ Handle Next Question
+  // ✅ Handle Next Question or Show Answer
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-      setSelectedAnswer(null);
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (!showAnswer) {
+      setShowAnswer(true);
+
+      // ✅ Set Feedback Message
+      if (selectedAnswer === currentQuestion.correctAnswer) {
+        setFeedbackMessage("Correct! Great job!");
+      } else {
+        setFeedbackMessage(`Oops! The correct answer was: ${currentQuestion.correctAnswer}`);
+      }
+
     } else {
-      navigate("/results", {
-        state: {
-          score: questions.filter(
-            (q, index) => selectedAnswer === q.correctAnswer
-          ).length,
-          total: questions.length,
-        },
-      });
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex((prev) => prev + 1);
+        setSelectedAnswer(null);
+        setShowAnswer(false);
+        setFeedbackMessage(""); // ✅ Reset feedback
+      } else {
+        const correctAnswersCount = questions.filter(
+          (q, index) => selectedAnswer === q.correctAnswer
+        ).length;
+
+        navigate("/results", {
+          state: {
+            score: correctAnswersCount,
+            total: questions.length,
+          },
+        });
+      }
     }
   };
 
@@ -88,18 +108,20 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
-      {/* ✅ Common Header */}
+      {/* ✅ Global Header */}
       <Header />
 
-      {/* ✅ Quiz Header */}
-      <h1 className="quiz-header">Quiz Time!</h1>
-      <p className="quiz-details">
-        <strong>Category:</strong> {categoryName} | <strong>Difficulty:</strong>{" "}
-        {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
-      </p>
-      <h2 className="quiz-details">
-        Question {currentQuestionIndex + 1} of {questions.length}
-      </h2>
+      {/* ✅ Quiz Title Section */}
+      <section className="quiz-title-section">
+        <h1 className="quiz-title">Quiz Time!</h1>
+        <p className="quiz-details">
+          <strong>Category:</strong> {categoryName} | <strong>Difficulty:</strong>{" "}
+          {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+        </p>
+        <h2 className="quiz-details">
+          Question {currentQuestionIndex + 1} of {questions.length}
+        </h2>
+      </section>
 
       {/* ✅ Display Question */}
       <p
@@ -113,22 +135,41 @@ const Quiz = () => {
           <button
             key={index}
             onClick={() => handleAnswerSelect(option)}
-            className={`quiz-option ${
-              selectedAnswer === option ? "selected" : ""
-            }`}
+            className={`quiz-option
+              ${selectedAnswer === option ? "selected" : ""}
+              ${
+                showAnswer && option === currentQuestion.correctAnswer
+                  ? "correct"
+                  : showAnswer && selectedAnswer === option
+                  ? "incorrect"
+                  : ""
+              }
+            `}
+            disabled={showAnswer}
           >
             {option}
           </button>
         ))}
       </div>
 
-      {/* ✅ Next or Submit Button */}
+      {/* ✅ Feedback Message */}
+      {showAnswer && (
+        <div className={`feedback-message ${selectedAnswer === currentQuestion.correctAnswer ? "correct" : "incorrect"}`}>
+          {feedbackMessage}
+        </div>
+      )}
+
+      {/* ✅ Next or Show Answer Button */}
       <button
         onClick={handleNextQuestion}
-        disabled={!selectedAnswer}
-        className="quiz-button"
+        disabled={!selectedAnswer && !showAnswer}
+        className="next-button"
       >
-        {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit Quiz"}
+        {showAnswer
+          ? currentQuestionIndex < questions.length - 1
+            ? "Next Question"
+            : "Finish Quiz"
+          : "Check Answer"}
       </button>
     </div>
   );

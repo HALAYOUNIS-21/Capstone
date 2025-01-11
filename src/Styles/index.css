@@ -33,9 +33,10 @@ a {
   font-family: "Alexandria", sans-serif;
   font-weight: 500;
   color: #646cff;
-  text-decoration: none; /* Prevent underline */
+  text-decoration: none;
   transition: color 0.2s;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -44,33 +45,32 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  justify-content: left; /* Center horizontally */
-  align-items: left;    /* Center vertically */
-  min-width: 320px;
+  align-items: center;
+  min-width: 100vw;
   min-height: 100vh;
-  font-family: "Alexandria", sans-serif; /* Default font */
+  font-family: "Alexandria", sans-serif;
   background-color: var(--Primary_Basic_Background);
 }
 
 /* Headings */
 h1 {
-  font-family: "Handjet", sans-serif; /* Apply Handjet font */
+  font-family: "Handjet", sans-serif;
   font-size: 3.2em;
-  font-weight: 800; /* Bold for emphasis */
+  font-weight: 800;
   line-height: 1.1;
-  letter-spacing: 5.8px; /* Add letter spacing */
+  letter-spacing: 5.8px;
   color: var(--Primary_Basic_Content);
-  text-align: left; /* Center-align headings */
+  text-align: left;
 }
 
 /* Buttons */
 button {
-  border-radius: 0; /* Removed rounded corners for retro design */
+  border-radius: 0;
   border: 1px solid var(--Primary_Basic_Content);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: "Alexandria", sans-serif; /* Replaced inherit with Alexandria */
+  font-family: "Alexandria", sans-serif;
   background-color: var(--Primary_Basic_Background);
   color: var(--Primary_Basic_Content);
   box-shadow: 8px 8px 0px var(--Shadow_Color);
@@ -78,20 +78,51 @@ button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   align-items: center;
 }
+
 button:hover {
-  transform: translateY(-3px); /* Moves button up slightly */
-  box-shadow: none; /* Removes shadow on hover */
+  transform: translateY(-3px);
+  box-shadow: none;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Button Icon Styling */
+.icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Number Button Styling */
+
+.number-button {
+  width: 50px;
+  height: 50px;
+  background-color: var(--Primary_Basic_Background);
+  border: 1px solid var(--Primary_Basic_Content);
+  box-shadow: 8px 8px 0 var(--Shadow_Color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  transition: all 0.3s ease;
+  font-size: 30px;
+}
+
+.number-button:hover {
+  transform: translateY(-2px);
+}
+
 /* Responsive Utilities */
 @media (max-width: 1024px) {
   h1 {
-    font-size: 2.6em; /* Reduce heading size */
+    font-size: 2.6em;
   }
+
   button {
     font-size: 0.9em;
     padding: 0.5em 1em;
@@ -100,12 +131,22 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   h1 {
-    font-size: 2.4em; /* Further reduce heading size */
+    font-size: 2.4em;
   }
+
   button {
     font-size: 0.8em;
-    font-family: "Alexandria", sans-serif; /* Ensure Alexandria font */
     padding: 0.4em 0.8em;
+  }
+
+  .number-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -121,13 +162,12 @@ button:focus-visible {
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
-  font-family: "Alexandria", sans-serif; /* Ensure Alexandria font */
+  font-family: "Alexandria", sans-serif;
 }
 
 /* Dropdown Styling */
 .dropdown {
   display: flex;
-  font-family: "Alexandria", sans-serif; /* Replaced inherit with Alexandria */
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
@@ -138,7 +178,7 @@ button:focus-visible {
 }
 
 .dropdown:hover {
-  box-shadow: none; /* Remove shadow on hover */
+  box-shadow: none;
 }
 
 /* Light Mode Enhancements */
@@ -147,9 +187,11 @@ button:focus-visible {
     color: #CB5F3B;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
     color: #CB5F3B;
