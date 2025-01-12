@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
-import "../Styles/notfound.css"; // Import your CSS styles
+import "../Styles/NotFound.css"; // Import your CSS styles
 
 export default function NotFound() {
   const navigate = useNavigate();
