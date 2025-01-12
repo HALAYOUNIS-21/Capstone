@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
-import "../Styles/quiz.css";  // ✅ Import Quiz-specific styles
+import "../Styles/Quiz.css";  // ✅ Import Quiz-specific styles
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
