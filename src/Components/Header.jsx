@@ -1,7 +1,7 @@
 // src/Components/Header.jsx
 
 import React from "react";
-import "../components/Header.css";  // ✅ Correct path to the header styles
+import "../Components/Header.css";  // ✅ Correct path to the header styles
 
 const Header = () => {
   return (
