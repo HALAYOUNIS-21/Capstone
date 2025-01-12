@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';  // ✅ Import BrowserRouter
 
 import './Styles/index.css';  // Base Tailwind CSS file
-import './Styles/Styles.css'; // Custom styles
+import './Styles/styles.css'; // Custom styles
 
 
 import App from './App.jsx';  // Main App component
