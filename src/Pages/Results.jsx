@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../Components/Header";
-import "../Styles/results.css"; // Import results-specific styles
+import "../Styles/Results.css"; // Import results-specific styles
 
 const Results = () => {
   const location = useLocation();
